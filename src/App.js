@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import MeNavBar from './Components/me_navbar'
+import Login from './Components/login'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      loginStatus : false
+    }
+  }
+
+  signIn = (username, pwd) => {
+    this.setState({
+      loginStatus: true
+    })
+  }
+
+  signOut = () => {
+    this.setState({
+      loginStatus: false
+    });
+  }
+  
+
+  render() {
+    return (
+      <div className="App">
+        {/* <div className="container"> */}
+          {this.state.loginStatus ? 
+          <MeNavBar 
+            logoutFunc ={this.signOut}
+          /> : 
+          <Login 
+            loginState={this.state.loginStatus}
+            loginFunc ={this.signIn}
+          />}
+        {/* </div> */}
+      </div>
+    );
+  }
 }
 
 export default App;
