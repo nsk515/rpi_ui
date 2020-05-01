@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import MeNavBar from './Components/me_navbar'
+import MainApp from './Components/mainapp'
 import Login from './Components/login'
 
 class App extends Component {
@@ -8,14 +8,24 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loginStatus : false
+      loginStatus : false,
+      loginError: false
     }
   }
 
   signIn = (username, pwd) => {
-    this.setState({
-      loginStatus: true
-    })
+    if(username === "admin" && pwd === "admin") {
+      this.setState({
+        loginStatus: true,
+        loginError: false
+      });
+    }
+    else {
+      this.setState({
+        loginStatus: false,
+        loginError: true
+      })
+    }
   }
 
   signOut = () => {
@@ -30,11 +40,12 @@ class App extends Component {
       <div className="App">
         {/* <div className="container"> */}
           {this.state.loginStatus ? 
-          <MeNavBar 
+          <MainApp 
             logoutFunc ={this.signOut}
           /> : 
           <Login 
             loginState={this.state.loginStatus}
+            loginError={this.state.loginError}
             loginFunc ={this.signIn}
           />}
         {/* </div> */}
