@@ -1,39 +1,20 @@
 import React, { Component } from 'react';
-import logo from "../logo.svg"
+import logo from "../logoME.png"
 import './me_navbar.css'
 
 
 class MeNavBar extends Component {
+    // eslint-disable-next-line
     constructor() {
         super();
-
-        this.state = {
-            navlist :   [
-                { label: "Home", link: '#home', active : true},
-                { label: "Charts", link: '#charts', active : false},
-                { label: "Configure", link: '#configure', active : false},
-            ]
-        };
-    }
-
-    tabClick=(e) => {
-        this.state.navlist.map((item, index) => {
-            index===e ? item.active = true : item.active = false;
-            return(item)
-        });
-        this.setState({render: true});
-    }
-
-    logOut = () => {
-        this.props.logoutFunc();
     }
 
     render() {
 
-        let navItems = this.state.navlist.map((item, index) => {
+        let navItems = this.props.navlist.map((item, index) => {
             return(
                 item.active ?   <li key={index} className="active"><a href={item.link}>{item.label}</a></li> : 
-                                <li key={index}><a href={item.link} onClick={()=>this.tabClick(index)}>{item.label}</a></li>
+                                <li key={index}><a href={item.link} onClick={()=>this.props.tabClick(index)}>{item.label}</a></li>
             )
         })
         return(
@@ -43,7 +24,7 @@ class MeNavBar extends Component {
                         <li><img src={logo} alt="logo" className="logo"></img></li>
                         <li><a href='./#'> </a></li>
                         {navItems}
-                        <li style={{float:'right'}}><a href='#logout' onClick={()=>this.logOut()}>Logout</a></li>
+                        <li style={{float:'right'}}><a href='#logout' onClick={()=>this.props.logout()}>Logout</a></li>
                     </ul>
                 </div>
             </nav>
