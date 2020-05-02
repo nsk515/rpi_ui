@@ -41,4 +41,4 @@ class MainApp extends Component {
     }
 }
 
-export default MainApp
+export default MainApp;
