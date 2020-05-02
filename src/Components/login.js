@@ -36,7 +36,7 @@ class Login extends Component {
                             {this.props.loginError ? <h3>Invalid LoginID or Password</h3> : '' }
                             <input type="text" placeholder="Enter Username" onChange={this.onChangeUsername} value={this.state.username}/><br></br>
                             <input type="password" placeholder="Enter Password" onChange={this.onChangePassword} value={this.state.password}/><br></br>
-                            <button type="submit"  onClick={()=>this.loginClick()}>Login</button>
+                            <button type="button"  onClick={()=>this.loginClick()}>Login</button>
                         </div>
                     </form>
                 </div>
