@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import SideNav from './sidenav'
 import './sidenav.css'
+import './Home.css'
+import { TablePagination } from 'react-pagination-table';
+import axios from 'axios';
 
 class Home extends Component {
     constructor() {
         super();
         this.state = {
             sidebarNavList : [
-                { label: "HomeNavItem1",    link: '#homenav1',  active : true},
-                { label: "HomeNavItem2",    link: '#homenav2',  active : false},
-                { label: "HomeNavItem3",    link: '#homenav3',  active : false},
-                { label: "HomeNavItem4",    link: '#homenav4',  active : false},
+                { label: "Favorites",       link: '#homenav1',  active : true},
+                { label: "Devices",         link: '#homenav2',  active : false},
+                { label: "Data",            link: '#homenav3',  active : false},
+                { label: "Rules",           link: '#homenav4',  active : false},
                 { label: "HomeNavItem5",    link: '#homenav5',  active : false},
             ],
-            actveTab : 0
+            activeTab : 0,
+            prevActiveTab : 0,
+            tableData : null
         }
     }
 
@@ -22,19 +27,44 @@ class Home extends Component {
             index===e ? item.active = true : item.active = false;
             return(item)
         });
+        this.state.prevActiveTab = this.state.activeTab;
         this.setState({
-            actveTab : e,
+            activeTab : e,
             render: true
         });
     }
 
+    componentDidUpdate() {
+        console.log('Component Did Update'); 
+        if(this.state.prevActiveTab !== this.state.activeTab) {
+            var msg = '';
+            switch(this.state.activeTab) {
+                case 0 : msg = (<h2>Selected Nav Item 1</h2>);
+                        break;
+                case 1 :console.log('case 1'); 
+                        axios.get('http://localhost:4000/api/device/')
+                            .then((response) => {this.setState({tableData: response.data});})
+                            .catch((error) => {console.log('error', error)})
+                        break;
+                case 2 : msg = (<h2>Selected Nav Item 3</h2>);
+                        break;
+                case 3 : msg = (<h2>Selected Nav Item 4</h2>);
+                        break;
+                default: msg = (<h2>Selected Nav Item default</h2>);
+                        break;
+            }
+            this.state.prevActiveTab = this.state.activeTab;
+        }
+    }
+
     render() {
-        
+        console.log('render');
         let msg = '';
-        switch(this.state.actveTab) {
+        let headers = [];
+        switch(this.state.activeTab) {
             case 0 : msg = (<h2>Selected Nav Item 1</h2>);
                     break;
-            case 1 : msg = (<h2>Selected Nav Item 2</h2>);
+            case 1 : headers = ["deviceID", "MAC", "Device Name"]
                     break;
             case 2 : msg = (<h2>Selected Nav Item 3</h2>);
                     break;
@@ -49,6 +79,18 @@ class Home extends Component {
                 <SideNav navlist={this.state.sidebarNavList} sideTabClick={this.sideTabClick}/>
                 <div className='column column-page'>
                     <h1 style={{paddingLeft:'50px'}}>This is Home Page</h1>
+                    {this.state.tableData ?  
+                        <TablePagination
+                            title="TablePagination"
+                            subTitle="Sub Title"
+                            headers={ headers }
+                            data={ this.state.tableData }
+                            columns="deviceid.mac.devicename"
+                            perPageItemCount={ 5 }
+                            totalCount={ this.state.tableData?this.state.tableData.label:0 }
+                            arrayOption={ [["size", 'all', ' ']] }
+                            className="deviceTable"
+                        /> : ''}
                     {msg}
                 </div>
             </div>
