@@ -4,6 +4,8 @@ import axios from 'axios';
 import '../Custom/input.css'
 import '../Custom/button.css'
 
+const Constants = require('../../Config/Config');
+
 class DataForm extends Component {
 
     constructor(props) {
@@ -25,7 +27,7 @@ class DataForm extends Component {
 
     componentDidMount() {
         if(this.props.id) {
-            axios.get('http://localhost:4000/api/data/'+this.props.id.toString())
+            axios.get(Constants.url+Constants.port+'/api/data/'+this.props.id.toString())
             .then((response) => {
                 response.data[0].timestamp = Number(response.data[0].timestamp);
                 this.setState({tableData: response.data[0]});
@@ -36,7 +38,7 @@ class DataForm extends Component {
 
     onClickBtn() {
         if(this.props.id) {
-            axios.put('http://localhost:4000/api/data/'+this.props.id.toString(), {
+            axios.put(Constants.url+Constants.port+'/api/data/'+this.props.id.toString(), {
                 deviceid: this.state.tableData.deviceid,
                 value: this.state.tableData.value,
                 timestamp: this.state.tableData.timestamp
