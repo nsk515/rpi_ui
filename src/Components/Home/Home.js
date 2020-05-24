@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import SideNav from './sidenav';
-import './sidenav.css';
+import SideNav from '../sidenav';
+import '../sidenav.css';
 import DeviceManager from './DeviceManager';
+import DataManager from './DataManager'
 
 class Home extends Component {
     constructor() {
@@ -41,7 +42,7 @@ class Home extends Component {
                     break;
             case 1 : msg = (<DeviceManager />);
                     break;
-            case 2 : msg = (<h2>Selected Nav Item 3</h2>);
+            case 2 : msg = (<DataManager />);
                     break;
             case 3 : msg = (<h2>Selected Nav Item 4</h2>);
                     break;
@@ -53,7 +54,7 @@ class Home extends Component {
             <div className='row'>
                 <SideNav navlist={this.state.sidebarNavList} sideTabClick={this.sideTabClick}/>
                 <div className='column column-page'>
-                    <h1 style={{paddingLeft:'50px'}}>This is Home Page</h1>
+                    {/* <h1 style={{paddingLeft:'50px'}}>This is Home Page</h1> */}
                     {msg}
                 </div>
             </div>

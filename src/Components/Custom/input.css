@@ -1,0 +1,51 @@
+input {
+    position: relative;
+    margin: 10px;
+    padding: 10px 10px;
+    min-width: 200px;
+}
+
+select {
+    position: relative;
+    margin: 10px;
+    padding: 10px 10px;
+    min-width: 200px;
+}
+
+input:read-only {
+    background-color: rgb(200, 200, 200);
+}
+
+
+.dateTimePicker {
+    max-width: 200px;
+}
+
+.react-datetime-picker input  {
+    margin:2px !important;
+}
+
+.react-datetime-picker__inputGroup__input--hasLeadingZero {
+    padding-left: 0 !important;
+}
+
+.react-calendar__navigation button {
+    background: #3283e0c0 !important;
+}
+
+.react-calendar {
+    background: rgb(200, 200, 200) !important;
+}
+
+.react-calendar__tile--now {
+    background: rgb(230, 230, 230) !important
+}
+
+.react-datetime-picker__wrapper {
+    padding: 7px 20px;
+    margin: 10px;
+}
+
+.react-datetime-picker button {
+    color: black !important;
+}

@@ -14,6 +14,7 @@
     color: #000000A0;
     width: 100%;
     border: 1px solid #ddd;
+    background-color: whitesmoke;
 }
 
 .meTable .table-header {
@@ -47,10 +48,10 @@
 
 .meTablePagination {
     position: relative;
-    width: 100%;
+    width: 35%;
     background-color: whitesmoke;
     height: 70px;
-    padding-left: 60%;
+    padding-left: 65%;
 }
 
 .meTablePagination__btn {
@@ -81,4 +82,10 @@
 
 .actionIcons:hover {
     opacity: 100%;
+}
+
+.searchBox {
+    position: relative;
+    margin: 5px 100px !important;
+    height: 30px;
 }
