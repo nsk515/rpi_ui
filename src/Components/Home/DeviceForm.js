@@ -33,7 +33,7 @@ class DeviceForm extends Component {
 
     componentDidMount() {
         if(this.props.id) {
-            axios.get(Constants.url+Constants.port+'api/device/'+this.props.id.toString())
+            axios.get(Constants.url+Constants.port+'/api/device/'+this.props.id.toString())
             .then((response) => {
                 this.setState({tableData: response.data[0]});
             })
