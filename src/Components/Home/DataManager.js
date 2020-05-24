@@ -7,6 +7,8 @@ import '../Custom/button.css'
 import DataForm from './DataForm'
 import MEPopUp from '../Custom/MEPopUp'
 
+const Constants = require('../../Config/Config');
+
 class DataManager extends Component {
 
     constructor(props) {
@@ -23,7 +25,7 @@ class DataManager extends Component {
     }
 
     delete(id) {
-        axios.delete('http://localhost:4000/api/data/' + id)
+        axios.delete(Constants.url+Constants.port+'/api/data/' + id)
         .then((response) => {
             if(response.status === 200) {
                 let tempTableData = this.state.tableData;
@@ -39,7 +41,7 @@ class DataManager extends Component {
     }
 
     updateDataTable() {
-        axios.get('http://localhost:4000/api/data/')
+        axios.get(Constants.url+Constants.port+'/api/data/')
         .then((response) => {
             let resp = response.data;
             resp.map((e) => {

@@ -3,6 +3,8 @@ import axios from 'axios';
 import '../Custom/input.css'
 import '../Custom/button.css'
 
+const Constants = require('../../Config/Config');
+
 class DeviceForm extends Component {
 
     constructor(props) {
@@ -31,7 +33,7 @@ class DeviceForm extends Component {
 
     componentDidMount() {
         if(this.props.id) {
-            axios.get('http://localhost:4000/api/device/'+this.props.id.toString())
+            axios.get(Constants.url+Constants.port+'api/device/'+this.props.id.toString())
             .then((response) => {
                 this.setState({tableData: response.data[0]});
             })
@@ -41,7 +43,7 @@ class DeviceForm extends Component {
 
     onClickBtn() {
         if(this.props.id) {
-            axios.put('http://localhost:4000/api/device/'+this.props.id.toString(), {
+            axios.put(Constants.url+Constants.port+'/api/device/'+this.props.id.toString(), {
                 deviceid: this.state.tableData.deviceid,
                 mac: this.state.tableData.mac,
                 devicename: this.state.tableData.devicename
@@ -55,7 +57,7 @@ class DeviceForm extends Component {
             });
         }
         else {
-            axios.post('http://localhost:4000/api/device/', {
+            axios.post(Constants.url+Constants.port+'/api/device/', {
                 deviceid: this.state.tableData.deviceid,
                 mac: this.state.tableData.mac,
                 devicename: this.state.tableData.devicename

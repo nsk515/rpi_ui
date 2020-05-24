@@ -7,6 +7,8 @@ import '../Custom/button.css'
 import DeviceForm from './DeviceForm'
 import MEPopUp from '../Custom/MEPopUp'
 
+const Constants = require('../../Config/Config');
+
 class DeviceManager extends Component {
 
     constructor(props) {
@@ -27,7 +29,7 @@ class DeviceManager extends Component {
     }
 
     delete(id) {
-        axios.delete('http://localhost:4000/api/device/' + id)
+        axios.delete(Constants.url+Constants.port+'/api/device/' + id)
         .then((response) => {
             if(response.status === 200) {
                 let tempTableData = this.state.tableData;
@@ -47,7 +49,7 @@ class DeviceManager extends Component {
     }
 
     updateDeviceTable() {
-        axios.get('http://localhost:4000/api/device/')
+        axios.get(Constants.url+Constants.port+'/api/device/')
         .then((response) => {
             let resp = response.data;
             resp.map((e) => {
