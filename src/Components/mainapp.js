@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MeNavBar from './me_navbar'
-import Home from './Home'
+import Home from './Home/Home'
 import Charts from './Charts'
 import Configure from './Configure'
 

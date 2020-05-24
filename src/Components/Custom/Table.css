@@ -1,0 +1,91 @@
+.meTable {
+    position: relative;
+    width: 80%;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 90%;
+}
+
+.meTable .title {
+    font-size: 130%;
+}
+
+.meTable .table {
+    color: #000000A0;
+    width: 100%;
+    border: 1px solid #ddd;
+    background-color: whitesmoke;
+}
+
+.meTable .table-header {
+    color: whitesmoke;
+    background-color: #3283e0c0;
+    text-align: left;
+}
+
+
+
+.meTable .table-header th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+}
+
+.meTable tbody tr:nth-child(even) {
+    background-color: #3283e010;
+}
+
+.meTable tbody tr:hover {
+    color: black;
+}
+
+.meTable tbody td {
+    padding-left: 5px;
+}
+
+
+
+
+.meTablePagination {
+    position: relative;
+    width: 35%;
+    background-color: whitesmoke;
+    height: 70px;
+    padding-left: 65%;
+}
+
+.meTablePagination__btn {
+    width: fit-content;
+    margin-right: 0px;
+    padding: 5px 15px;
+    margin-left: 15px;
+    background-color: #3283e0c0;
+    box-shadow: rgb(0,0,0,0.5) 2px 2px 2px;
+}
+
+.meTablePagination__btn--active {
+    box-shadow: none;
+}
+
+.meTablePagination__btn--disable {
+    box-shadow: none;
+}
+
+
+.actionIcons {
+    height: 15px;
+    width: 15px;
+    margin-left:10px;
+    margin-right: 10px;
+    opacity: 70%;
+}
+
+.actionIcons:hover {
+    opacity: 100%;
+}
+
+.searchBox {
+    position: relative;
+    margin: 5px 100px !important;
+    height: 30px;
+}
