@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import SideNav from './sidenav'
-import './sidenav.css'
+import SideNav from '../sidenav'
+import '../sidenav.css'
+import Grid from '../Custom/Grid'
 
-class Charts extends Component {
+class Widgets extends Component {
     constructor() {
         super();
         this.state = {
             sidebarNavList : [
-                { label: "ChartsNavItem1",    link: '#chartsnav1',  active : true},
-                { label: "ChartsNavItem2",    link: '#chartsnav2',  active : false},
-                { label: "ChartsNavItem3",    link: '#chartsnav3',  active : false},
-                { label: "ChartsNavItem4",    link: '#chartsnav4',  active : false},
-                { label: "ChartsNavItem5",    link: '#chartsnav5',  active : false},
+                { label: "Charts",    link: '#charts',  active : true},
+                { label: "WidgetsNavItem2",    link: '#widgetsnav2',  active : false},
+                { label: "WidgetsNavItem3",    link: '#widgetsnav3',  active : false},
+                { label: "WidgetsNavItem4",    link: '#widgetsnav4',  active : false},
+                { label: "WidgetsNavItem5",    link: '#widgetsnav5',  active : false},
             ],
             actveTab : 0
         }
@@ -32,7 +33,7 @@ class Charts extends Component {
         
         let msg = '';
         switch(this.state.actveTab) {
-            case 0 : msg = (<h2>Selected Nav Item 1</h2>);
+            case 0 : msg = (<Grid />);
                     break;
             case 1 : msg = (<h2>Selected Nav Item 2</h2>);
                     break;
@@ -48,7 +49,7 @@ class Charts extends Component {
             <div className='row'>
                 <SideNav navlist={this.state.sidebarNavList} sideTabClick={this.sideTabClick}/>
                 <div className='column column-page'>
-                    <h1 style={{paddingLeft:'30px'}}>This is Charts Page</h1>
+                    {/* <h1 style={{paddingLeft:'30px'}}>This is Charts Page</h1> */}
                     {msg}
                 </div>
             </div>
@@ -56,4 +57,4 @@ class Charts extends Component {
     }
 }
 
-export default Charts;
+export default Widgets;

@@ -1,0 +1,19 @@
+.widget-container {
+    width: 100%;
+    height: 100%;
+}
+
+.widget-header {
+    width: 98%;
+    height: 10%;
+    background-color: #3283e0;
+    padding: 1% 1%;
+    color: whitesmoke;
+}
+
+.widget-body {
+    width: 98%;
+    height: 84%;
+    margin: 1% 1%;
+    background-color: whitesmoke;
+}

@@ -80,7 +80,7 @@ class DataManager extends Component {
                     data={ this.state.tableData }
                     columns="deviceid.devicename.value.timestamp.edit"
                     searchColumns={['deviceid', 'devicename']}
-                    perPageItemCount={ 15 }
+                    perPageItemCount={ 10 }
                 />
             </div>
         )

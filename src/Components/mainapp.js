@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MeNavBar from './me_navbar'
 import Home from './Home/Home'
-import Charts from './Charts'
+import Widgets from './Widgets/Widgets'
 import Configure from './Configure'
 
 class MainApp extends Component {
@@ -11,7 +11,7 @@ class MainApp extends Component {
         this.state = {
             navlist :   [
                 { label: "Home",        link: '#home',      active : true},
-                { label: "Charts",      link: '#charts',    active : false},
+                { label: "Widgets",      link: '#widgets',    active : false},
                 { label: "Configure",   link: '#configure', active : false},
             ]
         };
@@ -34,7 +34,7 @@ class MainApp extends Component {
                     tabClick = {this.tabClick}
                 />
                 {this.state.navlist[0].active ? <Home /> : ''}
-                {this.state.navlist[1].active ? <Charts /> : ''}
+                {this.state.navlist[1].active ? <Widgets /> : ''}
                 {this.state.navlist[2].active ? <Configure /> : ''}
             </div>
         );

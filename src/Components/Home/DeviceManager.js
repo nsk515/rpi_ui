@@ -94,7 +94,7 @@ class DeviceManager extends Component {
                     data={ this.state.tableData }
                     columns="deviceid.mac.devicename.edit"
                     searchColumns={['deviceid', 'mac', 'devicename']}
-                    perPageItemCount={ 15 }
+                    perPageItemCount={ 10 }
                 />
             </div>
         );

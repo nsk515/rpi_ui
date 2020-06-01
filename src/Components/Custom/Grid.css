@@ -1,0 +1,33 @@
+.grid-container {
+    background-color:red;
+    margin: 0 5px;
+    padding-left: 20px;
+    height: auto;
+}
+
+.grid-style {
+    background-color:rgb(200, 200, 200);
+    float:left;
+    width:350px;
+    height: 237px;
+    margin: 20px 20px;
+    cursor: pointer;
+    /* padding: 5px 5px; */
+}
+
+.grid-style:hover {
+    background-color: rgb(180, 180, 180);
+}
+
+.grid-style.add-new {
+    background-color: #00000000;
+    border: rgb(200, 200, 200);
+    border-style: dotted;
+    border-radius: 10px;
+}
+
+.grid-style.add-new:hover {
+    border: rgb(180, 180, 180);
+    border-style: dotted;
+    border-radius: 10px;
+}
