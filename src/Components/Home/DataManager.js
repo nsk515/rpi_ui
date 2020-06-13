@@ -55,7 +55,6 @@ class DataManager extends Component {
                     </tr></tbody></table>)
                 let tempDateTime = new Date(Number(e.timestamp));
                 e.timestamp = tempDateTime.toLocaleString();
-                console.log(e.timestamp);
         return e;
             })
             this.setState({tableData: resp});

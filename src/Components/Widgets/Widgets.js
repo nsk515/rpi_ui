@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SideNav from '../sidenav'
 import '../sidenav.css'
 import Grid from '../Custom/Grid'
+import MEChart from '../Custom/Chart'
 
 class Widgets extends Component {
     constructor() {
@@ -33,9 +34,9 @@ class Widgets extends Component {
         
         let msg = '';
         switch(this.state.actveTab) {
-            case 0 : msg = (<Grid />);
+            case 0 : msg = (<Grid type="charts"/>);
                     break;
-            case 1 : msg = (<h2>Selected Nav Item 2</h2>);
+            case 1 : msg = (<MEChart id={'ME01001573'} />);
                     break;
             case 2 : msg = (<h2>Selected Nav Item 3</h2>);
                     break;

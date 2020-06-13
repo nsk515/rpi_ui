@@ -71,7 +71,7 @@ class DataForm extends Component {
             <div>
                 <form style={{padding:'0', margin:'0', width:'fit-content', border:'none', borderRadius:'0', WebkitBoxShadow:'none', backgroundColor:'whitesmoke'}}>
                     <br/>
-                    <h4 style={{fontSize:'140%', fontStyle:'bold', margin:'15px', color:'#3283e0ff'}}>
+                    <h4 style={{fontSize:'140%', fontStyle:'bold', margin:'15px', color:'#0d85ddff'}}>
                         {this.props.id ? 'Edit Data' : 'Register New Data'}
                     </h4><br/>
                     <input readOnly="readonly" placeholder='Device ID' value={this.state.tableData?this.state.tableData.deviceid:''} />

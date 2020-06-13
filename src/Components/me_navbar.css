@@ -1,5 +1,5 @@
 .menu {
-    background-color: #3283e0;
+    background-color: #0d85dd;
     box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
     /* width: 752px; */
@@ -14,7 +14,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #3283e0;
+    background-color: #0d85dd;
     position: fixed;
     top: 0;
     width: 100%;
@@ -39,7 +39,7 @@ ul {
   .active a {
     background-color: whitesmoke;
     color: #428bca;
-    border-top: 2px solid #3283e0;
+    border-top: 2px solid #0d85dd;
     padding-top: 8px;
     box-shadow: rgba(0, 0, 0, 0.5) inset 2px 2px 2px;
   }

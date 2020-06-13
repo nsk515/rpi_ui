@@ -19,7 +19,7 @@
 
 .meTable .table-header {
     color: whitesmoke;
-    background-color: #3283e0c0;
+    background-color: #0d85dde0;
     text-align: left;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .meTable tbody tr:nth-child(even) {
-    background-color: #3283e010;
+    background-color: #0d85dd10;
 }
 
 .meTable tbody tr:hover {
@@ -59,7 +59,7 @@
     margin-right: 0px;
     padding: 5px 15px;
     margin-left: 15px;
-    background-color: #3283e0c0;
+    background-color: #0d85ddc0;
     box-shadow: rgb(0,0,0,0.5) 2px 2px 2px;
 }
 
