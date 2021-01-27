@@ -12,16 +12,32 @@ class MEChart extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: ''
+            data: '',
+            timerObject: null
         }
     }
 
     componentDidMount() {
-        console.log('Chart: ', this.props.id);
         if(this.props.id) {
             axios.get(Constants.url+Constants.port+'/api/device/data/' + this.props.id)
                 .then((response) => {
-                    console.log('response', response.data);
+                    this.setState({data: response.data});
+                    this.state.timerObject = setInterval(this.refreshChart, 5000);
+                })
+                .catch((error) => {console.log('error', error)});
+        }
+    }
+
+    componentWillUnmount() {
+        if(this.state.timerObject) {
+            clearInterval(this.state.timerObject);
+        }
+    }
+
+    refreshChart=() => {
+        if(this.props.id) {
+            axios.get(Constants.url+Constants.port+'/api/device/data/' + this.props.id)
+                .then((response) => {
                     this.setState({data: response.data});
                 })
                 .catch((error) => {console.log('error', error)});
@@ -75,8 +91,8 @@ class MEChart extends Component {
             {this.state.data && this.state.data.length>0 ?
                 <LineChart 
                     data={data} 
-                    yMin={Number(min-(range/10))}
-                    yMax={Number(max+(range/10))}
+                    yMin={Number(min-(range/2))}
+                    yMax={Number(max+(range/2))}
                     width={340} 
                     height={200} 
                     id={this.props.id}
@@ -87,7 +103,7 @@ class MEChart extends Component {
                     isDate={true}
                     xParser={d3.timeParse("%d-%m-%Y %H-%M-%S")}
                     xDisplay={d3.timeFormat("%H:%M")}
-                    ticks={2}
+                    ticks={3}
                     interpolate="linear"
                     pointRadius={2}
                 /> : 'No Data Available'}

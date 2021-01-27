@@ -16,7 +16,9 @@ class DeviceForm extends Component {
                             mac: '',
                             protocol : 0,
                             nodetype: 0,
-                            widget: 0
+                            widget: 0,
+                            minVal: '',
+                            maxVal: ''
                         },
             success: false,
             msg: ''
@@ -28,6 +30,8 @@ class DeviceForm extends Component {
         this.onChangeDeviceID = this.onChangeDeviceID.bind(this);
         this.onChangeMacID = this.onChangeMacID.bind(this);
         this.onChangeDeviceName = this.onChangeDeviceName.bind(this);
+        this.onChangeMinVal = this.onChangeMinVal.bind(this);
+        this.onChangeMaxVal = this.onChangeMaxVal.bind(this);
     }
 
     componentDidMount() {
@@ -110,6 +114,18 @@ class DeviceForm extends Component {
         this.setState({tableData: tempTableData});
     }
 
+    onChangeMinVal(e) {
+        let tempTableData = this.state.tableData;
+        tempTableData.minVal = e.target.value;
+        this.setState({tableData: tempTableData});
+    }
+
+    onChangeMaxVal(e) {
+        let tempTableData = this.state.tableData;
+        tempTableData.maxVal = e.target.value;
+        this.setState({tableData: tempTableData});
+    }
+
     render() {
         return(
             <div>
@@ -127,6 +143,8 @@ class DeviceForm extends Component {
                         <option value={3}>MQTT</option>
                         <option value={4}>XBEE</option>
                     </select> <br/>
+                    <input placeholder='Min Value' type='number' value={this.state.tableData?this.state.tableData.minVal:''} onChange={this.onChangeMinVal}/>
+                    <input placeholder='Max Value' type='number' value={this.state.tableData?this.state.tableData.maxVal:''} onChange={this.onChangeMaxVal}/> <br/>
                     <select value={this.state.tableData?this.state.tableData.nodetype:''} onChange={this.onNodeTypeChange}>
                         <option value={1} disabled>Device Type</option>
                         <option value={2}>Analog Sensor</option>
@@ -139,7 +157,7 @@ class DeviceForm extends Component {
                         <option value={0} disabled>Add Widget</option>
                         <option value={1}>None</option>     {/* Should we add option to check nodetype here? */}
                         <option value={2}>Chart</option>
-                        <option value={3}>Widget 2</option>
+                        <option value={3}>Gauge</option>
                         <option value={4}>Widget 3</option>
                     </select> <br/>
                     <button type='button' style={{marginLeft:'30%', width:'200px', marginRight:'10px'}} onClick={this.onClickBtn}>

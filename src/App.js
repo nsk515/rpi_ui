@@ -14,7 +14,8 @@ class App extends Component {
   }
 
   signIn = (username, pwd) => {
-    if(username === "admin" && pwd === "admin") {
+    // if(username === "admin" && pwd === "admin") {
+    if(true) {
       this.setState({
         loginStatus: true,
         loginError: false

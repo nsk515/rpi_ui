@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Widget.css'
 import MEChart from './Chart'
+import MEGauge from './Gauge'
 import axios from 'axios';
 import edit_icon from '../icons/edit-white.png'
 import star_outline from '../icons/star-outline.png'
@@ -12,8 +13,7 @@ class Widget extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            deviceData: '',
-            fav : false
+            deviceData: ''
         }
     }
 
@@ -28,7 +28,17 @@ class Widget extends Component {
     }
 
     onFav = () => {
-        this.setState({fav: !this.state.fav});
+        axios.put(Constants.url+Constants.port+'/api/device/fav/' + this.props.id.toString(), {
+            favflag: !this.state.deviceData.favorite
+        })
+        .then((response) => {
+            let tempData = this.state.deviceData;
+            tempData.favorite = !tempData.favorite;
+            this.setState({deviceData: tempData});
+        })
+        .catch((error) => {console.log('error', error)});
+        
+        setTimeout(()=>{ console.log('OnFav', this.props.id, this.state.deviceData.favorite);},500);
     }
 
     onRemove = () => {
@@ -37,8 +47,11 @@ class Widget extends Component {
 
     render() {
         let widgetBody='';
-        if(this.state.deviceData && this.props.type === "chart") {
+        if(this.state.deviceData && this.state.deviceData.widget === 2) {
             widgetBody=(<MEChart id={this.state.deviceData.deviceid} />);
+        }
+        else if(this.state.deviceData && this.state.deviceData.widget === 3) {
+            widgetBody=(<MEGauge id={this.state.deviceData.deviceid} />);
         }
         return(
             <div className='widget-container'>
@@ -47,7 +60,7 @@ class Widget extends Component {
                         {this.state.deviceData.devicename}
                     </div>
                     <div style={{float: 'left', right:'10px', position: 'absolute'}}>
-                        {this.state.fav ?
+                        {this.state.deviceData && this.state.deviceData.favorite ?
                             <img src={star_filled} alt={"Star Filled"} className='actionIcons' onClick={this.onFav} /> :
                             <img src={star_outline} alt={"Star Outline"} className='actionIcons' onClick={this.onFav} />}
                         <img src={edit_icon}  title='Edit' alt='Edit' className='actionIcons' />

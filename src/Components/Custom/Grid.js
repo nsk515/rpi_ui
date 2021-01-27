@@ -16,8 +16,14 @@ class Grid extends Component {
     }
 
     componentDidMount() {
+        let widgettype = 0;
         if(this.props.type === "charts") {
-            axios.get(Constants.url+Constants.port+'/api/widget/2')
+            widgettype=2;
+        }
+        else if(this.props.type === "gauge") {
+            widgettype=3;
+        }
+        axios.get(Constants.url+Constants.port+'/api/widget/'+widgettype.toString())
             .then((response) => {
                 let data = response.data;
                 let deviceList = [];
@@ -28,18 +34,22 @@ class Grid extends Component {
                 this.setState({devices: deviceList});
             })
             .catch((error) => {console.log('error', error)});
-        }
     }
 
     removeDevice = (id) => {
         console.log(id);
+
+        axios.put(Constants.url+Constants.port+'/api/device/widget/' + id.toString(), {
+            widgetType: 0
+        })
+        .catch((error) => {console.log('error', error)});
+
         let deviceList = this.state.devices;
         this.setState({devices: []});
         id = deviceList.indexOf(id);
         if(id >= 0) {
             deviceList.splice(id, 1);
             setTimeout(()=>{this.setState({devices: deviceList})}, 10, deviceList);
-            
         }
     }
 
@@ -52,7 +62,6 @@ class Grid extends Component {
                         <div className='grid-style'>
                             <Widget
                             id={e} 
-                            type={"chart"}
                             onRemove={this.removeDevice}
                             />
                         </div>

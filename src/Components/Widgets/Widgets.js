@@ -3,6 +3,7 @@ import SideNav from '../sidenav'
 import '../sidenav.css'
 import Grid from '../Custom/Grid'
 import MEChart from '../Custom/Chart'
+import MEGauge from '../Custom/Gauge';
 
 class Widgets extends Component {
     constructor() {
@@ -10,7 +11,7 @@ class Widgets extends Component {
         this.state = {
             sidebarNavList : [
                 { label: "Charts",    link: '#charts',  active : true},
-                { label: "WidgetsNavItem2",    link: '#widgetsnav2',  active : false},
+                { label: "Gauge",    link: '#gauge',  active : false},
                 { label: "WidgetsNavItem3",    link: '#widgetsnav3',  active : false},
                 { label: "WidgetsNavItem4",    link: '#widgetsnav4',  active : false},
                 { label: "WidgetsNavItem5",    link: '#widgetsnav5',  active : false},
@@ -31,12 +32,12 @@ class Widgets extends Component {
     }
 
     render() {
-        
         let msg = '';
+        let gridtype = '';
         switch(this.state.actveTab) {
-            case 0 : msg = (<Grid type="charts"/>);
+            case 0 : gridtype = "charts";
                     break;
-            case 1 : msg = (<MEChart id={'ME01001573'} />);
+            case 1 : gridtype = "gauge";
                     break;
             case 2 : msg = (<h2>Selected Nav Item 3</h2>);
                     break;
@@ -51,7 +52,8 @@ class Widgets extends Component {
                 <SideNav navlist={this.state.sidebarNavList} sideTabClick={this.sideTabClick}/>
                 <div className='column column-page'>
                     {/* <h1 style={{paddingLeft:'30px'}}>This is Charts Page</h1> */}
-                    {msg}
+                    {gridtype ? (gridtype==="charts" ? <Grid type={"charts"} /> : '') : msg}
+                    {gridtype ? (gridtype==="gauge" ? <Grid type={"gauge"} /> : '') : msg}
                 </div>
             </div>
         )

@@ -1,0 +1,7 @@
+.svg-line-chart-tooltip {
+    z-index: 30;
+    text-align: left !important;
+    width: fit-content !important;
+    border: #aaa solid 1px !important;
+    padding: 0 5px;
+}
